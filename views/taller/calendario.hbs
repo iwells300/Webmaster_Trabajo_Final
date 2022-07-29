@@ -1,0 +1,62 @@
+<div class=" taller adminLogin adminAgregarModificar" id="adminAgregarModificar" >
+    <div class=" adminAgregarModificar">
+        <div class="adminAgregarModificar--div">
+            {{#if turnoExitoso}}
+            <h4>{{nombre}} {{apellido}}</h4>
+            <h4>{{mensaje}}</h4>
+            <h4>Lo esperamos en el taller.</h4>
+            <form action="/taller">
+                <a href="/taller" class="btn btn-dark">Volver a taller</a>
+            </form>
+            {{else}}
+            <h4>Hola {{nombre}} {{apellido}}</h4>
+            <h4>Bienvenido a la administración de turnos <br>Es un gusto atender su {{modelo}}</h4>
+            
+            <form method="post" action="/taller/calendario/agendar/{{nombre}}/{{apellido}}/{{modelo}}" class="adminAgregarModificar--form">
+                <div class="form-group">
+                    <label>Elegir día:</label>
+                    <input type="date" id="dia" class="form-control" value="{{dia}}" name="dia">
+                </div>
+                <div class="form-group">
+                    <label>Elegir hora:</label>
+                    <input type="time" class="form-control hora" value="{{hora}}"  name="hora" min="09:00" max="18:00">
+                </div>
+                
+                <select class="form-select form-select-sm combustibleCombo" aria-label="Seleccionar tipo de auto" name="combustible" value="{{combustible}}">
+                    <option selected>Seleccionar tipo de combustible</option>
+                    <option value="1">Nafta</option>
+                    <option value="2">Diesel</option>
+                </select>
+                <select class="form-select form-select-sm serviceCombo" aria-label="Seleccionar tipo de auto" name="service" value="{{service}}">
+                    <option selected>Seleccionar service</option>
+                    
+                </select>
+
+                <div>
+                    <h5 class="tareasTitulo">{{mensaje}}</h5>
+                    <p class="tareas"></p>
+                </div>
+                
+                   
+                <div class="col-12 text-center">
+                <button type="submit" class="btn btn-outline-primary btn-lg">Solicitar turno</button>
+
+                </div>
+                {{#if ocupado}}
+                    <h5>{{message}}</h5>
+                {{/if}}
+
+            </form>
+            {{/if}}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+            document.getElementById('adminAgregarModificar').scrollIntoView(); 
+            
+</script>
+
+<script src="/JavaScriptS1/calendario.js"></script>

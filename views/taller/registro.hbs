@@ -1,0 +1,63 @@
+<div class=" taller adminLogin adminAgregarModificar" id="adminAgregarModificar" >
+    <div class=" adminAgregarModificar">
+        <div class="adminAgregarModificar--div">
+            <h4>Registro turno en taller</h4>
+            {{#if registroCompleto}}
+            <h3>Felicidades se ha completado el registro exitosamente.</h3>
+            <a href="/taller" class="btn btn-dark">Volver a taller</a>
+            {{else}}
+            <form method="post" action="/taller/registro/agregar" class="adminAgregarModificar--form">                
+                <div class="form-group">
+                    <input type="text" placeholder="Nombre" class="form-control" name="nombre" {{#if nombre}}value="{{nombre}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Apellido" class="form-control" name="apellido" {{#if apellido}}value="{{apellido}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Direccion" class="form-control" name="direccion" {{#if direccion}}value="{{direccion}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" class="form-control" name="email" {{#if email}}value="{{email}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Telefono" class="form-control" name="telefono" {{#if telefono}}value="{{telefono}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Modelo" class="form-control" name="modelo" {{#if modelo}}value="{{modelo}}"{{/if}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Año" class="form-control" name="anio" {{#if anio}}value="{{anio}}"{{/if}}>
+                </div>  
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" name="password" {{#if password}}value="{{password}}"{{/if}}>
+                </div>                  
+                <div class="col-12 text-center">
+                <button type="submit" class="btn btn-outline-primary btn-lg">Registrarse</button>
+
+                </div>
+                
+                {{#if error}}
+                    <h5>{{message}}</h5>
+                {{/if}}
+
+            </form>
+
+            {{#if campoCodigo}}
+                <form method="post" action="/taller/registro/verificar" class="adminAgregarModificar--form">                               <div class="form-group">
+                        <input type="text" placeholder="Codigo de validación" class="form-control" name="codigo">
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-outline-primary btn-lg">Verificar</button>
+                    </div>
+            {{/if}}
+            
+            {{/if}}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+          document.getElementById('adminAgregarModificar').scrollIntoView(); 
+</script>
